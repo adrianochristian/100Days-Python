@@ -1,8 +1,8 @@
-#Day 4 -> Randomisation and Python Lists
-#Rock Papers and Scissors
+# Day 4 -> Randomisation and Python Lists
+# Rock Papers and Scissors
 import random
 
-options = ['Rock', 'Paper','Scissors']
+options = ['Rock', 'Paper', 'Scissors']
 player = int(input("What do you choose? 0 for Rock, 1 for Paper or 2 for Scissors. "))
 if options[player]:
     print(options[player])
@@ -11,10 +11,10 @@ else:
     exit()
 
 print("Computer chose: ")
-computer = random.randint(0,2)
+computer = random.randint(0, 2)
 print(options[computer])
 
-if computer == player :
+if computer == player:
     print('Draw')
 elif computer == 0 and player == 2:
     print('You Lose')

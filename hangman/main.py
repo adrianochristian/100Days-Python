@@ -1,4 +1,4 @@
-#Day 7 -> Hangman
+# Day 7 -> Hangman
 import random
 import hangman_art as art
 from hangman_words import word_list
@@ -28,7 +28,7 @@ while not game_end:
         lives -= 1
         print(f"You guessed {guess}, and that's a wrong letter. You lose a life")
 
-    print(art.stages[lives])  
+    print(art.stages[lives])
     print(f"{''.join(display_word)}")
 
     if '_' not in display_word:

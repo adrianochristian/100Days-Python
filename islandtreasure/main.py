@@ -1,5 +1,5 @@
-#Day 3 -> Working with logic and conditional operators
-#Island Treasure
+# Day 3 -> Working with logic and conditional operators
+# Island Treasure
 
 print('''
 *******************************************************************************
@@ -23,13 +23,16 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/______/
 *******************************************************************************
 ''')
-#Game
+# Game
 print("Welcome to the Treasure Island Game.\nYour mission is to find the treasure")
 path = input("You're at a crossroad. Where do you want to go? Left or Right? ").lower()
 if path == 'left':
-    path = input("You come to a lake. There is a island in the middle of thte lake. Swim across or Wait for a boat? ").lower()
+    path = input(
+        "You come to a lake. There is a island in the middle of thte lake. Swim across or Wait for a boat? ").lower()
     if path == 'wait':
-        path = input("You arrive at the island, unharmed. There is a house with 3 doors. One Red, one Yellow and one Blue. Which do you choose? ").lower()
+        path = input(
+            "You arrive at the island, unharmed. There is a house with 3 doors. One Red, one Yellow and one Blue. "
+            "Which do you choose? ").lower()
         if path == ('red' or 'blue'):
             print("You enter a room of beasts. Game Over")
         elif path == 'yellow':

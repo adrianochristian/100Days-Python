@@ -1,21 +1,26 @@
-#Day 10 -> Function with Outputs
-#Calculator
+# Day 10 -> Function with Outputs
+# Calculator
 
 from art import logo
 
 print(logo)
 
+
 def sum(first, second):
     return first + second
+
 
 def sub(first, second):
     return first - second
 
+
 def divide(first, second):
     return first / second
 
+
 def mult(first, second):
     return first * second
+
 
 operations = {
     "+": sum,

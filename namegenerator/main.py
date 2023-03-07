@@ -1,5 +1,5 @@
-#Day 1 -> Working with print and inputs
-#Name Generator
+# Day 1 -> Working with print and inputs
+# Name Generator
 
 print("Welcome to the Application")
 city = input("Please enter the name of the city you were born in:")

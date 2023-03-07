@@ -1,9 +1,9 @@
-#Day 14 -> Higher or Lower Game
+# Day 14 -> Higher or Lower Game
 from data import data
 from random import randint
 import art
 
-GAME_SCORE = {'score' : 0}
+GAME_SCORE = {'score': 0}
 
 RESET = False
 FIRST_PLAY = True
@@ -11,15 +11,18 @@ IS_RUNNING = True
 GAME_OVER = False
 ANSWERED = False
 
+
 def display_game(numbers):
     """Displays game questions using random selection in numbers[a, b] as index"""
-    
-    text1_length = 12 + len(data[numbers[0]]['name']) + len(data[numbers[0]]['description']) + len(data[numbers[0]]['country'])
+
+    text1_length = 12 + len(data[numbers[0]]['name']) + len(data[numbers[0]]['description']) + len(
+        data[numbers[0]]['country'])
 
     if data[numbers[0]]['description'][0].lower() == 'a':
         text1_length += 1
 
-    text2_length = 12 + len(data[numbers[1]]['name']) + len(data[numbers[1]]['description']) + len(data[numbers[1]]['country'])
+    text2_length = 12 + len(data[numbers[1]]['name']) + len(data[numbers[1]]['description']) + len(
+        data[numbers[1]]['country'])
 
     if data[numbers[1]]['description'][0].lower() == 'a':
         text2_length += 1
@@ -28,59 +31,65 @@ def display_game(numbers):
 
     if message != '':
         print(message, GAME_SCORE['score'])
-    
-    print(" "*11 + "┌" + "─"*text1_length + "┐")
+
+    print(" " * 11 + "┌" + "─" * text1_length + "┐")
 
     print("Compare A: │ " + data[numbers[0]]['name'] + ", ", end="")
 
     if data[numbers[0]]['description'][0].lower() == 'a':
-            print("an ", end="")
+        print("an ", end="")
     else:
-            print("a ", end="")
+        print("a ", end="")
 
     print(data[numbers[0]]['description'].lower() + f" from {data[numbers[0]]['country']}" + " │")
 
-    print(" "*11 + "└" + "─"*text1_length + "┘")
+    print(" " * 11 + "└" + "─" * text1_length + "┘")
 
     print(art.vs)
 
-    print(" "*11 + "┌" + "─"*text2_length + "┐")
+    print(" " * 11 + "┌" + "─" * text2_length + "┐")
 
     print("Against B: │ " + data[numbers[1]]['name'] + ", ", end="")
 
     if data[numbers[1]]['description'][0].lower() == 'a':
-            print("an ", end="")
+        print("an ", end="")
     else:
-            print("a ", end="")
+        print("a ", end="")
 
     print(data[numbers[1]]['description'].lower() + f" from {data[numbers[1]]['country']}" + " │")
 
-    print(" "*11 + "└" + "─"*text2_length + "┘")
+    print(" " * 11 + "└" + "─" * text2_length + "┘")
+
 
 def check_input(choice, numbers):
-
     if data[numbers[0]]['follower_count'] > data[numbers[1]]['follower_count']:
-        
+
         return choice == 'a'
 
     else:
 
         return choice == 'b'
 
+
 def final_comparison(choice, numbers):
-    
     result = data[numbers[0]]['follower_count'] > data[numbers[1]]['follower_count']
-    
+
     if result:
-        print(f"You chose [{choice.upper()}]. " + data[numbers[0]]['name'] + " has " + str(data[numbers[0]]['follower_count']) + " million followers, " + str((round(data[numbers[0]]['follower_count'] - data[numbers[1]]['follower_count']))) + " million more than " + data[numbers[1]]['name'])
+        print(f"You chose [{choice.upper()}]. " + data[numbers[0]]['name'] + " has " + str(
+            data[numbers[0]]['follower_count']) + " million followers, " + str(
+            (round(data[numbers[0]]['follower_count'] - data[numbers[1]]['follower_count']))) + " million more than " +
+              data[numbers[1]]['name'])
     else:
-        print(f"You chose [{choice.upper()}]. " + data[numbers[1]]['name'] + " has " + str(data[numbers[1]]['follower_count']) + " million followers, " + str(round((data[numbers[1]]['follower_count'] - data[numbers[0]]['follower_count']))) + " million more than " + data[numbers[0]]['name'])
+        print(f"You chose [{choice.upper()}]. " + data[numbers[1]]['name'] + " has " + str(
+            data[numbers[1]]['follower_count']) + " million followers, " + str(
+            round((data[numbers[1]]['follower_count'] - data[numbers[0]]['follower_count']))) + " million more than " +
+              data[numbers[0]]['name'])
+
 
 dataframe_length = len(data)
 
 number2 = randint(0, (dataframe_length - 1))
 message = ''
-
 
 while IS_RUNNING:
 
@@ -89,7 +98,6 @@ while IS_RUNNING:
     ANSWERED = False
 
     if RESET:
-
         message = ''
         number2 = randint(0, (dataframe_length - 1))
         RESET = False
@@ -98,7 +106,8 @@ while IS_RUNNING:
 
         print(art.logo)
 
-        player_input = input("\nWelcome to Higher Lower, would you like to play a game?\n('q' = exit, press any key to continue)\n> ").lower()
+        player_input = input(
+            "\nWelcome to Higher Lower, would you like to play a game?\n('q' = exit, press any key to continue)\n> ").lower()
         if player_input == 'q':
             IS_RUNNING = False
             break
@@ -120,14 +129,13 @@ while IS_RUNNING:
 
         if temp == number1:
             continue
-            
+
         else:
             number2 = temp
             newNumber = True
     else:
-        numbers = [number1, number2]        
+        numbers = [number1, number2]
 
-    
     while not ANSWERED and not GAME_OVER:
 
         display_game(numbers)
@@ -167,7 +175,7 @@ while IS_RUNNING:
         display_game(numbers)
         final_comparison(player_input, numbers)
         print()
-        
+
         player_input = input("Would you like to play again?\n('q' = exit, press any key to continue)\n\n> ").lower()
 
         if player_input == 'q':
@@ -178,4 +186,3 @@ while IS_RUNNING:
             GAME_SCORE['score'] = 0
             GAME_OVER = False
             continue
-              
